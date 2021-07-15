@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
   <title>TODO List</title>
 </head>
 <body>
@@ -14,8 +15,16 @@
       <button v-on:click="addItem">
       Add
       </button>
-      <pre>{{ $data }}</pre>
+      
     </form>
+    <ul>
+      <li v-for="(todo, index) in todos">
+        <input type="checkbox" v-model="todo.isDone">
+        <span v-bind:class="{ done: todo.isDone }">{{ todo.item }}</span>
+        <button v-on:click="deleteItem(index)">Delete</button>
+      </li>
+    </ul>
+    <!-- <pre>{{ $data }}</pre> -->
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
